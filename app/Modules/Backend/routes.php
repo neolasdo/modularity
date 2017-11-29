@@ -1,9 +1,11 @@
 <?php
 
-use \Illuminate\Support\Facades\Route;
+$namespace = 'App\Modules\Backend\Controllers';
 
 
-Route::get('admin', [
-    'uses' => 'App\Modules\Backend\Controllers\MainController\index',
-    'as' => 'backend.index'
-]);
+Route::group(['module' => 'backend', 'namespace' => $namespace], function () {
+    Route::get('admin', [
+        'uses' => 'AdminController@login',
+        'as' => 'admin.login'
+    ]);
+});
